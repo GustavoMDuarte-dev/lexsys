@@ -2,7 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Icon from 'react-native-vector-icons/AntDesign';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Feather from 'react-native-vector-icons/Feather';
+
 
 const Drawer = createDrawerNavigator();
 
@@ -28,11 +30,19 @@ function Processos({navigation}){
 
 }
 
+function Clientes({navigation}){
+  return(
+    <View style = {styles.container}>
+      <Image source={require('./assets/coruja.png')} style = {styles.logo}></Image>
+    </View>
+  )
+}
+
 export default function App(){
   return(
     <NavigationContainer>
       <Drawer.Navigator 
-      initialRouteName="Tela Inicial"
+      initialRouteName="Home"
       screenOptions={{
         drawerStyle: {
           backgroundColor: "#44161F",
@@ -46,14 +56,14 @@ export default function App(){
           color: "#fff"
         }
       }}>
-        <Drawer.Screen name="Tela Inicial"
+        <Drawer.Screen name="Home"
          component={Inicial}
          options={{
           drawerLabel: "Home",
           headerTintColor: "#fff", // cor do texto do cabecalho
           headerStyle: {backgroundColor: "#44161F"}, // cor do fundo do cabecalho
           headerShown: true,
-          drawerIcon: () => <Icon name = "home" color = "#fff" size ={34}/>
+          drawerIcon: () => <AntDesign name = "home" color = "#fff" size = {34}/>
 
           
          }}/>
@@ -64,7 +74,17 @@ export default function App(){
           headerTintColor: "#fff",
           headerStyle: {backgroundColor: "#44161F"},
           headerShown: true,
-          drawerIcon: () => <Icon name = "folderopen" color = "#fff" size ={34}/>
+          drawerIcon: () => <AntDesign name = "folderopen" color = "#fff" size = {34}/>
+        }}/>
+
+        <Drawer.Screen name = "Clientes"
+        component={Clientes}
+        options={{
+          drawerLabel: "Clientes",
+          headerTintColor: "#fff",
+          headerStyle: {backgroundColor: "#44161F"},
+          headerShown: true,
+          drawerIcon: () => <Feather name = "users" color = "#fff" size = {34} />
         }}
         />
       </Drawer.Navigator>
@@ -80,11 +100,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logo:{
-  flex: 1,
-  width: 500,
-  height: undefined,
-  opacity: 0.3,
+  logo: {
+  width: '90%',
+  aspectRatio: 1.5, // ou 1.5 se sua imagem for mais larga
+  opacity: 0.1,
+  resizeMode: 'contain',
   alignSelf: 'center',
-  },
+  height: '90%',
+},
 });
