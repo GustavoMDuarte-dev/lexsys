@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 
 const Drawer = createDrawerNavigator();
@@ -38,6 +39,22 @@ function Clientes({navigation}){
   )
 }
 
+function Financeiro({navigation}){
+  return(
+    <View style = {styles.container}>
+    <Image source={require('./assets/coruja.png')} style = {styles.logo}></Image>
+    </View>
+  )
+}
+
+function Agenda({navigation}){
+  return(
+    <View style = {styles.container}>
+    <Image source={require('./assets/coruja.png')} style={styles.logo}></Image>
+    </View>
+  )
+}
+
 export default function App(){
   return(
     <NavigationContainer>
@@ -67,7 +84,7 @@ export default function App(){
 
           
          }}/>
-        <Drawer.Screen name="Pocessos" 
+        <Drawer.Screen name="Processos" 
         component={Processos}
         options={{
           drawerLabel: "Processos",
@@ -85,8 +102,25 @@ export default function App(){
           headerStyle: {backgroundColor: "#44161F"},
           headerShown: true,
           drawerIcon: () => <Feather name = "users" color = "#fff" size = {34} />
-        }}
-        />
+        }}/>
+        <Drawer.Screen name = "Financeiro"
+        component={Financeiro}
+        options={{
+          drawerLabel: "Financeiro",
+          headerTintColor: "#fff",
+          headerStyle: {backgroundColor: "#44161F"},
+          headerShown: true,
+          drawerIcon: () => <MaterialIcons name = "attach-money" color = "#fff" size = {34} />
+        }}/>
+
+        <Drawer.Screen name = "Agenda"
+        component={Agenda}
+        options={{
+          drawerLabel: "Agenda",
+          headerTintColor: "#fff",
+          headerShown: true,
+          drawerIcon: () => <AntDesign name= "calendar" color = "#fff" size = {34} />
+        }}/>
       </Drawer.Navigator>
     </NavigationContainer>
   )
