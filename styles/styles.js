@@ -5,7 +5,9 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#D9D9D9',
-    justifyContent: 'center',
+    //justifyContent: 'center',
+    paddingTop: 80,
+
   },
   backgroundImage: {
     ...StyleSheet.absoluteFillObject,
@@ -15,7 +17,7 @@ export default StyleSheet.create({
     opacity: 0.07,
   },
   titleContent: {
-    backgroundColor: 'rgb(165, 122, 13)',
+    backgroundColor: 'rgb(185, 153, 71)',
     position: 'absolute',
     top: 0.6,
     width: '100%',
@@ -31,6 +33,14 @@ export default StyleSheet.create({
     fontWeight: '600',
     color: '#44161F',
     textAlign: 'center',
+  },
+  subtitle:{
+    fontFamily: 'Helvetica',
+    fontSize: 20,
+    fontWeight: '500',
+    color: '#44161F',
+    textAlign: 'center',
+    marginTop: 2
   },
   appName:{
      color: '#7B2A3B',
@@ -82,6 +92,41 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginTop: 4,
   },
+
+  saldoPrevistoText: {
+    fontWeight: 'bold',
+    color: '#2c8200', // Um verde para indicar saldo positivo, por exemplo
+    marginTop: 4,
+    marginBottom: 10, // Espaço antes do gráfico
+  },
+  miniGraficoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around', // Ou 'space-evenly'
+    alignItems: 'flex-end', // Alinha as barras pela base
+    marginTop: 15,
+    paddingHorizontal: 10, // Para não colar nas bordas do card
+    height: 100, // Altura total para o container do gráfico
+  },
+  barraGrafico: { // Container para cada barra individual + legenda
+    alignItems: 'center',
+    flex: 1, // Para que as barras ocupem espaço similar
+  },
+  barra: {
+    width: '60%', // Largura da barra (ajuste conforme o visual desejado)
+    borderRadius: 4, // Pequeno arredondamento nas barras
+    // marginBottom: 5, // Espaço entre a barra e a legenda (opcional, pode ser no estilo da legenda)
+  },
+  barraReceitas: {
+    backgroundColor: 'green',
+  },
+  barraDespesas: {
+    backgroundColor: 'red',
+  },
+  legendaBarra: {
+    fontSize: 10,
+    color: '#555',
+    marginTop: 4,
+  },
   fabButton: {
   position: 'absolute',
   bottom: 30,
@@ -97,5 +142,31 @@ export default StyleSheet.create({
   shadowOffset: { width: 0, height: 2 },
   shadowOpacity: 0.3,
   shadowRadius: 3,
+},
+processosContainer: { // Container principal para a tela de Processos
+    flex: 1,
+    backgroundColor: ' #D9D9D9', // Mesma cor de fundo da Home
+},
+acoesContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  paddingHorizontal: 10,
+  paddingVertical: 8,
+  backgroundColor: '#fff'
+},
+buscar:{
+  flex: 1,
+  flexDirection: 'row',
+  alignItems: 'center',
+  backgroundColor: '#f0f0f0',
+  borderRadius: 20,
+  paddingHorizontal: 10,
+},
+searchImput:{
+  flex: 1,
+  height: 40,
+  fontSize: 14,
+  color: '#333',
+  fontWeight: 'bold'
 },
 });

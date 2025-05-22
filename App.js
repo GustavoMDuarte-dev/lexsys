@@ -14,6 +14,7 @@ import {
   LayoutAnimation,
   Platform,
   UIManager,
+  TextInput,
 } from './imports';
 
 
@@ -28,7 +29,8 @@ function Inicial({ navigation }) {
         style={styles.backgroundImage}
       />
     <View style = {styles.titleContent}>
-      <Text style = {styles.title}>Bem-vindo ao <Text style={styles.appName}>LexSys</Text>, Dr. Gustavo</Text>  
+     <Text style={styles.title}>Bem Vindo ao <Text style={styles.appName}>LexSys</Text></Text>
+    <Text style={styles.subtitle}>Dr. Gustavo</Text>
     </View>
     <TouchableOpacity onPress={() => setExpandido(!expandido)}>
     <View style = {styles.card}>
@@ -79,6 +81,29 @@ function Inicial({ navigation }) {
         </View>
         <Text style={styles.cardContent}>Pagar taxa até 05/06</Text>
       </View>
+
+      <View style = {styles.card}>
+          <View style = {styles.cardHeader}>
+          <MaterialIcons name = "attach-money" size={20} color= "#333" style={{ marginRight: 8 }}/>
+          <Text style={styles.cardTitle}>Visão Financeira (Junho)</Text>
+          </View>
+          <Text style={styles.cardContent}>Previsto Receber: R$ 4.500,00</Text>
+          <Text style={styles.cardContent}>Previsto Pagar:   R$ 1.200,00</Text>
+          <Text style={[styles.cardContent, styles.saldoPrevistoText]}>Saldo Previsto: R$ 3.300,00</Text>
+
+          <View style={styles.miniGraficoContainer}>
+            <View style={styles.barraGrafico}>
+              <View style={[styles.barra, styles.barraReceitas, {height: 80}]}/>
+             <Text style={styles.legendaBarra}>Receitas</Text>
+            </View>
+            <View style={styles.barraGrafico}>
+        <View style={[styles.barra, styles.barraDespesas, { height: 30 }]} />
+        <Text style={styles.legendaBarra}>Despesas</Text>
+        </View>
+          </View>
+        
+      </View>
+
       <TouchableOpacity style={styles.fabButton} onPress={() => alert('Ação rápida!')}>
         <AntDesign name = "plus" size={30} color = "#fff"/>
       </TouchableOpacity>
@@ -88,8 +113,19 @@ function Inicial({ navigation }) {
 
 function Processos({ navigation }) {
   return (
-    <View style={styles.container}>
+    <View style={styles.processosContainer}>
       <Image source={require('./assets/coruja.png')} style={styles.backgroundImage} />
+      <View style={styles.acoesContainer}>
+        <View style={styles.buscar}>
+        <AntDesign name="search1" size={20} color="#888" style={{ marginRight: 8 }} />
+        <TextInput
+        style={styles.searchImput}
+        placeholder='Buscar Processo'
+        placeholderTextColor={"#888"}
+        />
+        </View> 
+
+      </View>
     </View>
   );
 }
