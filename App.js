@@ -9,15 +9,18 @@ import {
   AntDesign,
   Feather,
   MaterialIcons,
-  useFonts,
-  PlayfairDisplay_700Bold,
-  AppLoading,
+  TouchableOpacity,
+  useState,
+  LayoutAnimation,
+  Platform,
+  UIManager,
 } from './imports';
 
 
 const Drawer = createDrawerNavigator();
 
 function Inicial({ navigation }) {
+    const [expandido, setExpandido] = useState(false);
   return (
     <View style={styles.container}>
       <Image
@@ -27,6 +30,58 @@ function Inicial({ navigation }) {
     <View style = {styles.titleContent}>
       <Text style = {styles.title}>Bem-vindo ao <Text style={styles.appName}>LexSys</Text>, Dr. Gustavo</Text>  
     </View>
+    <TouchableOpacity onPress={() => setExpandido(!expandido)}>
+    <View style = {styles.card}>
+      <View style = {styles.cardHeader}>
+      <AntDesign name="folderopen" size={20} color="#333" style={{ marginRight: 8 }} />
+      <Text style = {styles.cardTitle} >Resumo dos Processos</Text>
+      </View>
+      <View style = {styles.cardStatusRow}>
+      <View style = {styles.statusDotGreen}/>
+      <Text style = {styles.cardContent}>15 Processos Ativos </Text>
+       <AntDesign
+        name={expandido ? 'up' : 'down'}
+        size={18}
+        color="#333"
+        style={{ marginLeft: 'auto' }}
+      />
+      </View>
+       {expandido && (
+            <View style={{ marginTop: 10 }}>
+              <Text style={styles.cardContent}>• 10 Cíveis</Text>
+              <Text style={styles.cardContent}>• 3 Trabalhistas</Text>
+              <Text style={styles.cardContent}>• 2 Familiares</Text>
+            </View>
+          )}
+    </View>
+    </TouchableOpacity>
+
+     <View style={styles.card}>
+        <View style={styles.cardHeader}>
+          <AntDesign name="calendar" size={20} color="#333" style={{ marginRight: 8 }} />
+          <Text style={styles.cardTitle}>Audiência do Dia</Text>
+        </View>
+        <Text style={styles.cardContent}>Próxima audiência: 10/06 às 14h</Text>
+      </View>
+
+      <View style={styles.card}>
+        <View style={styles.cardHeader}>
+          <Feather name="alert-triangle" size={20} color="#333" style={{ marginRight: 8 }} />
+          <Text style={styles.cardTitle}>Pendências Importantes</Text>
+        </View>
+        <Text style={styles.cardContent}>3 pendências críticas</Text>
+      </View>
+
+       <View style={styles.card}>
+        <View style={styles.cardHeader}>
+          <MaterialIcons name="notifications" size={20} color="#333" style={{ marginRight: 8 }} />
+          <Text style={styles.cardTitle}>Lembrete</Text>
+        </View>
+        <Text style={styles.cardContent}>Pagar taxa até 05/06</Text>
+      </View>
+      <TouchableOpacity style={styles.fabButton} onPress={() => alert('Ação rápida!')}>
+        <AntDesign name = "plus" size={30} color = "#fff"/>
+      </TouchableOpacity>
     </View>
   );
 }
