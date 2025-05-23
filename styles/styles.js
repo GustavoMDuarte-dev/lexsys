@@ -191,4 +191,18 @@ botoesAcaoLinha: {
     borderRadius: 20,
     marginTop: 5,
   },
+  headerColunasContainer:{
+    backgroundColor: '#e0e0e0',
+    marginTop: 10,
+
+  },
+  textoHeaderColuna:{
+    padding: 5,
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginHorizontal: 25,
+
+    
+
+  }
 });

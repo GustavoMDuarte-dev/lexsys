@@ -113,6 +113,7 @@ function Inicial({ navigation }) {
 }
 
 function Processos({ navigation }) {
+  
   return (
     <View style={styles.processosContainer}>
       <Image source={require('./assets/coruja.png')} style={styles.backgroundImage} />
@@ -138,6 +139,21 @@ function Processos({ navigation }) {
     <Text>Adicionar</Text>
   </TouchableOpacity>
 </View>
+<View style={styles.headerColunasContainer}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        >
+         
+          <Text style={[styles.textoHeaderColuna, { width: 100 }]}>Nº Processo</Text>
+          <Text style={[styles.textoHeaderColuna, { width:  100}]}>Cliente</Text>
+          <Text style={[styles.textoHeaderColuna, { width: 100 }]}>Status</Text>
+          <Text style={[styles.textoHeaderColuna, { width:  100}]}>Próx. Prazo</Text>
+          <Text style={[styles.textoHeaderColuna, { width: 100, paddingRight: 15 }]}>Últ. Mov.</Text> 
+        </ScrollView>
+      </View>
+      
+
     </View>
   );
 }
