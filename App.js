@@ -15,6 +15,7 @@ import {
   Platform,
   UIManager,
   TextInput,
+  ScrollView,
 } from './imports';
 
 
@@ -124,8 +125,19 @@ function Processos({ navigation }) {
         placeholderTextColor={"#888"}
         />
         </View> 
-
       </View>
+
+
+      <View style = {styles.botoesAcaoLinha}>
+ <TouchableOpacity onPress={() => alert('Importar Processo')} style={styles.botaoComTexto}>
+    <AntDesign name="cloudupload" size={20} color="#44161F"/>
+    <Text>Importar</Text>
+  </TouchableOpacity>
+ <TouchableOpacity onPress={() => alert('Adicionar Novo Processo')} style={styles.botaoComTexto}>
+    <AntDesign name="pluscircle" size={19} color="#44161F"/>
+    <Text>Adicionar</Text>
+  </TouchableOpacity>
+</View>
     </View>
   );
 }

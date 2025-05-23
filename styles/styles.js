@@ -169,4 +169,26 @@ searchImput:{
   color: '#333',
   fontWeight: 'bold'
 },
+botoesAcaoLinha: {
+    flexDirection: 'row',         
+    justifyContent: 'flex-end', 
+    paddingHorizontal: 10,        
+    paddingVertical: 8, 
+},
+ botaoAcaoIndividual: {
+    padding: 8,       
+    marginLeft: 15,                    
+    alignItems: 'center',
+    justifyContent: 'center',
+ },
+  botaoComTexto: { 
+    flexDirection: 'row',   
+    alignItems: 'center',    
+    paddingVertical: 8,
+    paddingHorizontal: 12,  
+    marginLeft: 10,
+    backgroundColor: '#e0e0e0',
+    borderRadius: 20,
+    marginTop: 5,
+  },
 });

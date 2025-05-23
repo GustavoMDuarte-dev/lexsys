@@ -2,7 +2,7 @@
 
 // React e React Native
 import React, { useState } from 'react';
-import { Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import {
   LayoutAnimation,
   Platform,
@@ -35,4 +35,5 @@ export {
   Platform,
   UIManager,
   TextInput,
+  ScrollView,
 };
