@@ -16,6 +16,7 @@ import {
   UIManager,
   TextInput,
   ScrollView,
+  FlatList,
 } from './imports';
 
 
@@ -113,6 +114,32 @@ function Inicial({ navigation }) {
 }
 
 function Processos({ navigation }) {
+
+  const RenderProcessoItem = ({ item }) => {
+  return (
+    <TouchableOpacity onPress={() => alert(`Processo: ${item.numero}`)}>
+      <View style={styles.linhaProcessoContainer}>
+          <Text style={[styles.celulaProcessoDado, { width: 180 }]}>{item.numero}</Text>
+          <Text style={[styles.celulaProcessoDado, { width: 220 }]}>{item.cliente}</Text>
+          <Text style={[styles.celulaProcessoDado, { width: 110 }]}>{item.status}</Text>
+          <Text style={[styles.celulaProcessoDado, { width: 130 }]}>{item.proximoPrazo || '---'}</Text>
+          <Text style={[styles.celulaProcessoDado, { width: 200, paddingRight: 15 }]}>{item.ultimaMovimentacao}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+};
+
+const mockProcessos = [
+    { id: '1', numero: '0012345-67.2023.8.21.0001', cliente: 'Empresa Fantasia Alfa Ltda.', status: 'Ativo', proximoPrazo: '10/06/2025', ultimaMovimentacao: 'Juntada de Petição Inicial' },
+    { id: '2', numero: '1009876-54.2022.5.04.0010', cliente: 'Maria Joaquina da Silva e Outros', status: 'Urgente', proximoPrazo: '25/05/2025', ultimaMovimentacao: 'Concluso para Sentença' },
+    { id: '3', numero: '0055555-22.2024.8.21.0015', cliente: 'Condomínio Residencial Flores', status: 'Suspenso', proximoPrazo: 'N/A', ultimaMovimentacao: 'Aguardando Laudo Pericial' },
+    { id: '4', numero: '0778899-00.2021.2.03.0020', cliente: 'Ana Beatriz Oliveira Costa', status: 'Arquivado', proximoPrazo: '', ultimaMovimentacao: 'Baixado Definitivamente' },
+    { id: '5', numero: '0000555-11.2024.8.21.0001', cliente: 'Pedro Alvares Cabral Neto', status: 'Ativo', proximoPrazo: '30/07/2025', ultimaMovimentacao: 'Réplica Apresentada' },
+    { id: '6', numero: '0076543-99.2023.8.21.0010', cliente: 'Comércio de Alimentos S.A.', status: 'Com Prazo', proximoPrazo: '01/06/2025', ultimaMovimentacao: 'Intimação para Manifestação' },
+    { id: '7', numero: '0011223-33.2023.8.21.0008', cliente: 'Construtora Casas Prontas Ltda', status: 'Em Recurso', proximoPrazo: '15/08/2025', ultimaMovimentacao: 'Apelação Recebida' },
+    { id: '8', numero: '2003004-55.2022.4.04.7100', cliente: 'Marta Ferreira de Souza', status: 'Extinto', proximoPrazo: '', ultimaMovimentacao: 'Transitado em Julgado' },
+  ];
+
   
   return (
     <View style={styles.processosContainer}>
@@ -121,7 +148,7 @@ function Processos({ navigation }) {
         <View style={styles.buscar}>
         <AntDesign name="search1" size={20} color="#888" style={{ marginRight: 8 }} />
         <TextInput
-        style={styles.searchImput}
+        style={styles.searchInput}
         placeholder='Buscar Processo'
         placeholderTextColor={"#888"}
         />
@@ -146,13 +173,22 @@ function Processos({ navigation }) {
         >
          
           <Text style={[styles.textoHeaderColuna, { width: 100 }]}>Nº Processo</Text>
-          <Text style={[styles.textoHeaderColuna, { width:  100}]}>Cliente</Text>
+          <Text style={[styles.textoHeaderColuna, { width: 100}]}>Cliente</Text>
           <Text style={[styles.textoHeaderColuna, { width: 100 }]}>Status</Text>
-          <Text style={[styles.textoHeaderColuna, { width:  100}]}>Próx. Prazo</Text>
+          <Text style={[styles.textoHeaderColuna, { width: 100}]}>Próx. Prazo</Text>
           <Text style={[styles.textoHeaderColuna, { width: 100, paddingRight: 15 }]}>Últ. Mov.</Text> 
         </ScrollView>
       </View>
-      
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.dadosBlocoScrollViewHorizontal}>
+        <View style={styles.flatListConteudoLargo}>
+       <FlatList
+        data={mockProcessos}
+        renderItem={RenderProcessoItem}
+        keyExtractor={item => item.id}
+        style={styles.flatListProcessos}
+      />
+      </View>
+      </ScrollView>
 
     </View>
   );

@@ -162,7 +162,7 @@ buscar:{
   borderRadius: 20,
   paddingHorizontal: 10,
 },
-searchImput:{
+searchInput:{
   flex: 1,
   height: 40,
   fontSize: 14,
@@ -194,15 +194,33 @@ botoesAcaoLinha: {
   headerColunasContainer:{
     backgroundColor: '#e0e0e0',
     marginTop: 10,
+    borderBottomWidth: 2,
+    borderBottomColor: '#A9A9A9',
 
   },
   textoHeaderColuna:{
     padding: 5,
     fontSize: 15,
     fontWeight: 'bold',
-    marginHorizontal: 25,
+    color: '#44161F',
+    marginRight: 50,
+    marginLeft: 10,
+  },
+  linhaProcessoContainer:{
+    flexDirection: 'row',
+    backgroundColor: '#fffff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#f0f00f0',
+  },
 
-    
-
+  celulaProcessoDado:{
+    fontSize: 13,
+    color: '#454545',
+    textAlign: 'left',
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+  },
+  dadosBlocoScrollViewHorizontal:{
+    flex: 1,
   }
 });
