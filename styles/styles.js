@@ -222,5 +222,9 @@ botoesAcaoLinha: {
   },
   dadosBlocoScrollViewHorizontal:{
     flex: 1,
+  },
+  barraRodapeLista:{
+    height: 10,
+    backgroundColor: '#A9A9A9',
   }
 });

@@ -17,6 +17,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 // Exporta tudo para usar no App.js
 export {
@@ -30,6 +31,7 @@ export {
   createDrawerNavigator,
   AntDesign,
   Feather,
+  FontAwesome,
   MaterialIcons,
   LayoutAnimation,
   Platform,
