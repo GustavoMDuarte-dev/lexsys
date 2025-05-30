@@ -5,7 +5,6 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#D9D9D9',
-    //justifyContent: 'center',
     paddingTop: 80,
 
   },
@@ -107,7 +106,7 @@ export default StyleSheet.create({
     paddingHorizontal: 10, // Para não colar nas bordas do card
     height: 100, // Altura total para o container do gráfico
   },
-  barraGrafico: { // Container para cada barra individual + legenda
+  barraGrafico: { 
     alignItems: 'center',
     flex: 1, // Para que as barras ocupem espaço similar
   },
@@ -226,5 +225,9 @@ botoesAcaoLinha: {
   barraRodapeLista:{
     height: 10,
     backgroundColor: '#A9A9A9',
-  }
+  },
+  Clientescontainer:{
+    flex: 1,
+    backgroundColor: '#D9D9D9',
+  },
 });
