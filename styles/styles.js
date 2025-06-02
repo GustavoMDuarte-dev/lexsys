@@ -230,4 +230,38 @@ botoesAcaoLinha: {
     flex: 1,
     backgroundColor: '#D9D9D9',
   },
+  cardCliente:{
+    backgroundColor: '#ffff',
+    borderRadius: 8,
+    padding: 16,
+    marginVertical: 8,
+    marginHorizontal: 16,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.22, 
+    shadowRadius: 2.22,  
+  },
+  cardNomeCliente:{
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333333',
+    marginBottom: 8,
+  },
+  cardInfoText:{
+    fontSize: 14,
+    color: '#555555',
+    marginBottom: 4,
+  },
+  cardTagContainer:{
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 8,
+    marginBottom: 4,
+  },
+  tagText: {
+  fontSize: 13,         
+  color: '#6A737D',      
+  fontStyle: 'italic',  
+  },
 });
