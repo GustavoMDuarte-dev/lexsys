@@ -172,7 +172,9 @@ botoesAcaoLinha: {
     flexDirection: 'row',         
     justifyContent: 'flex-end', 
     paddingHorizontal: 10,        
-    paddingVertical: 8, 
+    paddingVertical: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#888888'
 },
  botaoAcaoIndividual: {
     padding: 8,       
@@ -229,9 +231,10 @@ botoesAcaoLinha: {
   Clientescontainer:{
     flex: 1,
     backgroundColor: '#D9D9D9',
+
   },
   cardCliente:{
-    backgroundColor: '#ffff',
+    backgroundColor: 'rgba(255, 255, 255, 0.50)',
     borderRadius: 8,
     padding: 16,
     marginVertical: 8,
@@ -241,6 +244,8 @@ botoesAcaoLinha: {
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.22, 
     shadowRadius: 2.22,  
+    borderWidth: 0.8,
+    borderColor:'#e0e0e0',
   },
   cardNomeCliente:{
     fontSize: 18,
@@ -263,5 +268,23 @@ botoesAcaoLinha: {
   fontSize: 13,         
   color: '#6A737D',      
   fontStyle: 'italic',  
+  },
+  cardAcoesContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginTop: 16,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: '#EEEEEE'
+  },
+  cardBotaoAcao:{
+    alignItems: 'center',
+    padding: 8,
+    minWidth: 60,
+  },
+  cardTextoBotaoAcao:{
+    fontSize: 11,
+    color: '#44161F',
   },
 });

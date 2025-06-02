@@ -14,12 +14,18 @@ import {
 } from '../imports';
 
 const DADOS_EXEMPLO_CLIENTES = [
-  { id: '1', nome: 'Cliente Exemplo Alfa', email: 'alfa@exemplo.com', telefone: '(11) 11111-1111', status: 'Ativo', tags: ['Importante', 'Novo', 'Atenção']},
-  { id: '2', nome: 'Cliente Exemplo Beta', email: 'beta@exemplo.com', telefone: '(22) 22222-2222', status: 'Potencial', tags: ['Novo'] },
+  { id: '1', nome: 'Cliente Exemplo Alfa', email: 'alfa@exemplo.com', telefone: '(11) 91111-1111', status: 'Ativo', tags: ['Importante', 'Novo', 'Atenção'] },
+  { id: '2', nome: 'Cliente Exemplo Beta', email: 'beta@exemplo.com', telefone: '(22) 92222-2222', status: 'Potencial', tags: ['Novo'] },
+  { id: '3', nome: 'Cliente Exemplo Gama', email: 'gama@exemplo.com', telefone: '(33) 93333-3333', status: 'Inativo', tags: ['Contrato Antigo', 'Pausado'] },
+  { id: '4', nome: 'Cliente Exemplo Delta', email: 'delta@exemplo.com', telefone: '(44) 94444-4444', status: 'Pendente', tags: ['Aguardando Documentos', 'Follow-up'] },
+  { id: '5', nome: 'Cliente Exemplo Epsilon', email: 'epsilon@exemplo.com', telefone: '(55) 95555-5555', status: 'Ativo', tags: ['VIP', 'Contrato Renovado'] },
+  { id: '6', nome: 'Cliente Exemplo Zeta', email: 'zeta@exemplo.com', telefone: '(66) 96666-6666', status: 'Ativo', tags: ['Suporte Premium', 'Internacional'] },
+  { id: '7', nome: 'Cliente Exemplo Eta', email: 'eta@exemplo.com', telefone: '(77) 97777-7777', status: 'Bloqueado', tags: ['Inadimplente', 'Negociação Urgente'] },
+  { id: '8', nome: 'Cliente Exemplo Theta', email: 'theta@exemplo.com', telefone: '(88) 98888-8888', status: 'Potencial', tags: ['Demonstração Agendada', 'Alta Prioridade', 'Decisor'] }
 ];
 
 export default function Clientes() {
-  const [clientes, setClientes] = useState(DADOS_EXEMPLO_CLIENTES);
+  const [clientes] = useState(DADOS_EXEMPLO_CLIENTES);
   const [termoBusca, setTermoBusca] = useState('');
 
   const renderCardCliente = ({ item }) => {
@@ -99,7 +105,7 @@ export default function Clientes() {
         renderItem={renderCardCliente}
         keyExtractor={item => item.id.toString()}
         ListEmptyComponent={<Text style={{ textAlign: 'center', marginTop: 20 }}>Nenhum cliente encontrado.</Text>}
-        style={{ flex: 1 }}
+        style={{flex: 1}}
       />
     </View>
   );
