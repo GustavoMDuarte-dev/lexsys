@@ -4,20 +4,12 @@ import {
   Text,
   View,
   Image,
-  NavigationContainer,
-  createDrawerNavigator,
   AntDesign,
-  FontAwesome,
   Feather,
   MaterialIcons,
   TouchableOpacity,
   useState,
-  LayoutAnimation,
-  Platform,
-  UIManager,
-  TextInput,
   ScrollView,
-  FlatList,
 } from '../imports';
 
 export default function Inicial() {

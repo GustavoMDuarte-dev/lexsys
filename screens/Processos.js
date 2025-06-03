@@ -23,6 +23,7 @@ import {
 
 export default function Processos() {
 
+ const [termoBusca, setTermoBusca] = useState('');
   const getStatusColor = (status) =>{
     if (status === 'Ativo') return 'green';
     if (status === 'Urgente') return 'red';
@@ -69,7 +70,11 @@ const mockProcessos = [
     { id: '16', numero: '3001002-33.2022.4.04.7200', cliente: 'Antônio Conselheiro Neto', status: 'Extinto', proximoPrazo: '', ultimaMovimentacao: 'Acordo homologado e cumprido' }
   ];
 
-  
+  const processosFiltrados = mockProcessos.filter(processo =>
+    processo.numero.toLowerCase().includes(termoBusca.toLowerCase()) ||
+    processo.cliente.toLowerCase().includes(termoBusca.toLowerCase()) ||
+    (processo.ultimaMovimentacao && processo.ultimaMovimentacao.toLowerCase().includes(termoBusca.toLowerCase()))
+  );
   return (
     <View style={styles.processosContainer}>
       <Image source={require('../assets/coruja.png')} style={styles.backgroundImage} />
@@ -77,12 +82,15 @@ const mockProcessos = [
         <View style={styles.buscar}>
         <AntDesign name="search1" size={20} color="#888" style={{ marginRight: 8 }} />
         <TextInput
-        style={styles.searchInput}
-        placeholder='Buscar Processo'
-        placeholderTextColor={"#888"}
+          style={styles.searchInput}
+          placeholder='Buscar Processo (Nº, Cliente, Mov.)'
+          placeholderTextColor={"#888"}
+          value={termoBusca} // Vincula valor ao estado
+          onChangeText={setTermoBusca} // Atualiza estado na alteração
         />
-        </View> 
+        </View>
       </View>
+
 
 
       <View style = {styles.botoesAcaoLinha}>
@@ -116,7 +124,7 @@ const mockProcessos = [
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.dadosBlocoScrollViewHorizontal}>
         <View style={styles.flatListConteudoLargo}>
        <FlatList
-        data={mockProcessos}
+        data={processosFiltrados}
         renderItem={RenderProcessoItem}
         keyExtractor={item => item.id}
         style={styles.flatListProcessos}
