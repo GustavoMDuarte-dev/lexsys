@@ -22,11 +22,8 @@ export default function Inicial() {
         source={require("../assets/coruja.png")}
         style={styles.backgroundImage}
       />
-      <View style={styles.titleContent}>
-        <Text style={styles.title}>
-          Bem Vindo ao <Text style={styles.appName}>LexSys</Text>
-        </Text>
-        <Text style={styles.subtitle}>Dr. Gustavo</Text>
+      <View style={styles.containerSaudacao}>
+        <Text style={styles.textSaudacao}>Olá, <Text style={styles.doctorName}>Dr. Gustavo</Text></Text>
       </View>
       <TouchableOpacity onPress={() => setExpandido(!expandido)}>
         <View style={styles.card}>

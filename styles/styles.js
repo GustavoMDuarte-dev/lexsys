@@ -15,23 +15,35 @@ export default StyleSheet.create({
     resizeMode: 'contain',
     opacity: 0.07,
   },
-  titleContent: {
-    backgroundColor: 'rgb(185, 153, 71)',
-    position: 'absolute',
-    top: 0.6,
-    width: '100%',
-    alignItems: 'center',
-    zIndex: 2,
-    paddingTop: 0,
-    borderBottomLeftRadius: 12,
-    borderBottomRightRadius: 12,
+  containerSaudacao:{
+    backgroundColor: 'rgba(255, 255, 255, 0.85)',
+    marginHorizontal: '4%',
+    marginTop: -70,
+    marginBottom: 30,
+    paddingHorizontal: 25,
+    paddingVertical: 15,
+    borderTopLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    alignItems: 'flex-start',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.1,         // Sombra bem sutil
+    shadowRadius: 10,
+    elevation: 4,
+    opacity: 1,          
+
   },
-  title:{
+  textSaudacao:{
     fontFamily: 'Helvetica',
     fontSize: 26,
-    fontWeight: '600',
+    color: '#546E7A', 
+    marginBottom: 3,
+
+  },
+  doctorName:{
+    fontSize: 30,
     color: '#44161F',
-    textAlign: 'center',
+    letterSpacing: 0.7,
   },
   subtitle:{
     fontFamily: 'Helvetica',
