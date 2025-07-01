@@ -1,7 +1,7 @@
 // imports.ts
 
 // React e React Native
-import React, { useState, useEffect } from 'react'; // Adicionado useEffect aqui
+import React, { useState, useEffect } from 'react';
 import { Text, View, Image, TouchableOpacity, TextInput, ScrollView, FlatList, Alert, StyleSheet } from 'react-native';
 import {
   LayoutAnimation,
@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 
 // Navegação
-import { NavigationContainer, useFocusEffect, useNavigation, useRoute, RouteProp } from '@react-navigation/native'; // Adicionado RouteProp
+import { NavigationContainer, useFocusEffect, useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'; // Adicionado StackNavigationProp
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 
 
 // Ícones
@@ -25,7 +25,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 export {
   React,
   useState,
-  useEffect, // Exportando o useEffect
+  useEffect,
   Text,
   View,
   Image,
@@ -48,6 +48,6 @@ export {
   useFocusEffect,
   useNavigation,
   useRoute,
-  RouteProp, // Exportando RouteProp
-  StackNavigationProp // Exportando StackNavigationProp
+  RouteProp,
+  StackNavigationProp
 };

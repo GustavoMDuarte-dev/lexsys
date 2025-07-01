@@ -1,16 +1,12 @@
-// App.tsx
+import { React, useEffect, NavigationContainer, createDrawerNavigator, AntDesign, Feather, MaterialIcons, View, Text } from './imports';
+import * as Database from './database/Database';
 
-import { React, useEffect, NavigationContainer, createDrawerNavigator, AntDesign, Feather, MaterialIcons } from './imports';
-import * as Database from './database/Database'; // Importe o Database
-
-// Suas telas
 import Inicial from './screens/Inicial';
 import ProcessoNavigator from './screens/ProcessoNavigator';
-import ClientesNavigator from './screens/ClienteNavigator';
+import ClienteNavigator from './screens/ClienteNavigator';
 
 const Drawer = createDrawerNavigator();
 
-// As telas de Financeiro e Agenda que você já tinha
 function Financeiro() {
   return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}><Text>Tela Financeiro</Text></View>;
 }
@@ -21,11 +17,9 @@ function Agenda() {
 
 
 export default function App() {
-
-  // Este hook será executado uma vez quando o app iniciar
   useEffect(() => {
-    Database.initDb(); // Chama nossa função para criar o banco e a tabela
-  }, []); // O array vazio [] garante que isso rode apenas uma vez
+    Database.initDb();
+  }, []);
 
   return (
     <NavigationContainer>
@@ -57,7 +51,7 @@ export default function App() {
         />
         <Drawer.Screen
           name="Processos"
-          component={ProcessoNavigator} // <<< Altere esta linha
+          component={ProcessoNavigator}
           options={{
             drawerLabel: "Processos",
             drawerIcon: () => <AntDesign name="folderopen" color="#fff" size={34} />,
@@ -65,7 +59,7 @@ export default function App() {
         />
         <Drawer.Screen
           name="Clientes"
-          component={ClientesNavigator}
+          component={ClienteNavigator}
           options={{
             drawerLabel: "Clientes",
             drawerIcon: () => <Feather name="users" color="#fff" size={34} />,
