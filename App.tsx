@@ -1,50 +1,32 @@
-import styles from './styles/styles';
-import {
-  React,
-  Text,
-  View,
-  Image,
-  NavigationContainer,
-  createDrawerNavigator,
-  AntDesign,
-  FontAwesome,
-  Feather,
-  MaterialIcons,
-  TouchableOpacity,
-  useState,
-  LayoutAnimation,
-  Platform,
-  UIManager,
-  TextInput,
-  ScrollView,
-  FlatList,
-} from './imports';
+// App.tsx
 
+import { React, useEffect, NavigationContainer, createDrawerNavigator, AntDesign, Feather, MaterialIcons } from './imports';
+import * as Database from './database/Database'; // Importe o Database
+
+// Suas telas
 import Inicial from './screens/Inicial';
-import Processos from './screens/Processos';
-import Clientes from './screens/Clientes';
-
+import ProcessoNavigator from './screens/ProcessoNavigator';
+import ClientesNavigator from './screens/ClienteNavigator';
 
 const Drawer = createDrawerNavigator();
 
-
-function Financeiro({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Image source={require('./assets/coruja.png')} style={styles.backgroundImage} />
-    </View>
-  );
+// As telas de Financeiro e Agenda que você já tinha
+function Financeiro() {
+  return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}><Text>Tela Financeiro</Text></View>;
 }
 
-function Agenda({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Image source={require('./assets/coruja.png')} style={styles.backgroundImage} />
-    </View>
-  );
+function Agenda() {
+  return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}><Text>Tela Agenda</Text></View>;
 }
+
 
 export default function App() {
+
+  // Este hook será executado uma vez quando o app iniciar
+  useEffect(() => {
+    Database.initDb(); // Chama nossa função para criar o banco e a tabela
+  }, []); // O array vazio [] garante que isso rode apenas uma vez
+
   return (
     <NavigationContainer>
       <Drawer.Navigator
@@ -60,6 +42,9 @@ export default function App() {
             fontSize: 20,
             color: "#fff",
           },
+          headerTintColor: "#fff",
+          headerStyle: { backgroundColor: "#44161F" },
+          headerShown: true,
         }}
       >
         <Drawer.Screen
@@ -67,31 +52,22 @@ export default function App() {
           component={Inicial}
           options={{
             drawerLabel: "Home",
-            headerTintColor: "#fff",
-            headerStyle: { backgroundColor: "#44161F" },
-            headerShown: true,
             drawerIcon: () => <AntDesign name="home" color="#fff" size={34} />,
           }}
         />
         <Drawer.Screen
           name="Processos"
-          component={Processos}
+          component={ProcessoNavigator} // <<< Altere esta linha
           options={{
             drawerLabel: "Processos",
-            headerTintColor: "#fff",
-            headerStyle: { backgroundColor: "#44161F" },
-            headerShown: true,
             drawerIcon: () => <AntDesign name="folderopen" color="#fff" size={34} />,
           }}
         />
         <Drawer.Screen
           name="Clientes"
-          component={Clientes}
+          component={ClientesNavigator}
           options={{
             drawerLabel: "Clientes",
-            headerTintColor: "#fff",
-            headerStyle: { backgroundColor: "#44161F" },
-            headerShown: true,
             drawerIcon: () => <Feather name="users" color="#fff" size={34} />,
           }}
         />
@@ -100,9 +76,6 @@ export default function App() {
           component={Financeiro}
           options={{
             drawerLabel: "Financeiro",
-            headerTintColor: "#fff",
-            headerStyle: { backgroundColor: "#44161F" },
-            headerShown: true,
             drawerIcon: () => <MaterialIcons name="attach-money" color="#fff" size={34} />,
           }}
         />
@@ -111,9 +84,6 @@ export default function App() {
           component={Agenda}
           options={{
             drawerLabel: "Agenda",
-            headerTintColor: "#fff",
-            headerStyle: { backgroundColor: "#44161F" },
-            headerShown: true,
             drawerIcon: () => <AntDesign name="calendar" color="#fff" size={34} />,
           }}
         />
@@ -121,5 +91,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-

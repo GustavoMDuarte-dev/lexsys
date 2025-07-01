@@ -8,10 +8,8 @@ export default StyleSheet.create({
     paddingTop: 80,
 
   },
-  backgroundImage: {
+   backgroundImage: {
     ...StyleSheet.absoluteFillObject,
-    width: null,
-    height: null,
     resizeMode: 'contain',
     opacity: 0.07,
   },
@@ -299,4 +297,30 @@ botoesAcaoLinha: {
     fontSize: 11,
     color: '#44161F',
   },
+  loginInput: {
+  backgroundColor: 'white',
+  paddingHorizontal: 15,
+  paddingVertical: 12,
+  borderRadius: 8,
+  marginTop: 10,
+  width: '90%',
+  alignSelf: 'center',
+  fontSize: 16,
+  borderWidth: 1,
+  borderColor: '#ddd'
+},
+loginButton: {
+  backgroundColor: '#44161F',
+  width: '90%',
+  alignSelf: 'center',
+  padding: 15,
+  borderRadius: 8,
+  alignItems: 'center',
+  marginTop: 20,
+},
+loginButtonText: {
+  color: 'white',
+  fontWeight: '700',
+  fontSize: 16,
+},
 });
