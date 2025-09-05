@@ -1,42 +1,79 @@
-// imports.js
+// imports.ts
 
-// React e React Native
+// --- React e Hooks ---
 import React, { useState } from 'react';
-import { Text, View, Image, TouchableOpacity, TextInput, ScrollView, FlatList } from 'react-native';
-import {
-  LayoutAnimation,
+
+// --- Componentes e APIs do React Native ---
+import { 
+  SafeAreaView,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  ImageBackground,
+  StatusBar,
   Platform,
+  KeyboardAvoidingView,
+  ScrollView,
+  FlatList,
+  LayoutAnimation,
   UIManager,
 } from 'react-native';
 
-// Navegação
-import { NavigationContainer } from '@react-navigation/native';
+// --- Navegação ---
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'; // Mais moderno que o createStackNavigator
 
-// Ícones
+// --- Firebase (importando do seu arquivo de configuração) ---
+// Certifique-se de que o caminho para o seu arquivo firebase.ts está correto
+import { auth, firestore, storage } from '../firebase'; 
+
+// --- Ícones ---
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-// Exporta tudo para usar no App.js
+// --- Re-exporta tudo para ser usado no aplicativo ---
 export {
+  // React
   React,
   useState,
-  Text,
+
+  // React Native
+  SafeAreaView,
   View,
-  Image,
-  TouchableOpacity,
-  NavigationContainer,
-  createDrawerNavigator,
-  AntDesign,
-  Feather,
-  FontAwesome,
-  MaterialIcons,
-  LayoutAnimation,
-  Platform,
-  UIManager,
+  Text,
   TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  ImageBackground,
+  StatusBar,
+  Platform,
+  KeyboardAvoidingView,
   ScrollView,
   FlatList,
+  LayoutAnimation,
+  UIManager,
+
+  // Navegação
+  NavigationContainer,
+  useNavigation,
+  createDrawerNavigator,
+  createNativeStackNavigator,
+
+  // Firebase
+  auth,
+  firestore,
+  storage,
+
+  // Ícones
+  AntDesign,
+  Feather,
+  MaterialIcons,
+  FontAwesome,
 };
