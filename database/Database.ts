@@ -1,4 +1,3 @@
-// database/Database.ts
 import * as SQLite from 'expo-sqlite';
 
 const DB_NAME = "lexsys.db";
@@ -9,7 +8,6 @@ const getConnection = async () => {
 
 const createDb = async () => {
     const db = await getConnection();
-    // Adicionamos o comando para criar a tabela 'processos'
     const queries = `
         CREATE TABLE IF NOT EXISTS clientes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,7 +27,6 @@ const createDb = async () => {
             ultimaMovimentacao TEXT
         );
     `;
-    // O método execAsync pode executar múltiplos comandos de uma só vez
     await db.execAsync(queries);
 }
 

@@ -1,4 +1,4 @@
-// imports.ts
+
 
 // React e React Native
 import React, { useState, useEffect } from 'react';
@@ -21,7 +21,6 @@ import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-// Exporta tudo para que possamos usar noutros ficheiros
 export {
   React,
   useState,

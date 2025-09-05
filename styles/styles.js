@@ -132,7 +132,6 @@ export default StyleSheet.create({
   barra: {
     width: '60%', // Largura da barra (ajuste conforme o visual desejado)
     borderRadius: 4, // Pequeno arredondamento nas barras
-    // marginBottom: 5, // Espaço entre a barra e a legenda (opcional, pode ser no estilo da legenda)
   },
   barraReceitas: {
     backgroundColor: 'green',

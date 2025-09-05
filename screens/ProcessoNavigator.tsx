@@ -1,14 +1,12 @@
-// screens/ProcessoNavigator.tsx
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Processos from './Processos';
 import ProcessoManter from './ProcessoManter';
 import { Processo } from '../model/Processo';
 
-// O "Mapa" da nossa navegação de Processos
 export type ProcessoStackParamList = {
-  ProcessoListar: undefined; // A tela de lista não recebe parâmetros
-  ProcessoManter: { processo?: Processo }; // A tela de manutenção pode receber um processo opcional
+  ProcessoListar: undefined; 
+  ProcessoManter: { processo?: Processo };
 };
 
 const Stack = createStackNavigator<ProcessoStackParamList>();
@@ -17,7 +15,7 @@ export default function ProcessoNavigator() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: false // Usamos o cabeçalho do menu principal
+        headerShown: false 
       }}
     >
       <Stack.Screen name="ProcessoListar" component={Processos} />
