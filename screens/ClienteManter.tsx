@@ -15,12 +15,10 @@ export default function ClienteManter() {
     const isUpdating = !!route.params?.cliente;
 
     useEffect(() => {
-        // CORREÇÃO: Verificamos se route.params.cliente existe antes de usá-lo.
         if (route.params?.cliente) {
             setFormCliente(route.params.cliente);
         }
-    }, [route.params?.cliente]); // A dependência agora é o próprio parâmetro.
-
+    }, [route.params?.cliente]); 
     const salvarCliente = async () => {
         if (!formCliente.nome) {
             Alert.alert("Erro", "O nome do cliente é obrigatório.");

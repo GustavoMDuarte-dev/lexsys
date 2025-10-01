@@ -1,4 +1,4 @@
-// imports.ts
+
 
 // React e React Native
 import React, { useState, useEffect } from 'react';
@@ -16,12 +16,7 @@ import { createStackNavigator, StackNavigationProp } from '@react-navigation/sta
 
 
 // Ícones
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
-// Exporta tudo para que possamos usar noutros ficheiros
+import { AntDesign, Feather, MaterialIcons, FontAwesome } from '@expo/vector-icons';
 export {
   React,
   useState,
