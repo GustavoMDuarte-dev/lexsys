@@ -5,6 +5,7 @@ import { React, NavigationContainer, createDrawerNavigator, AntDesign, Feather, 
 import Inicial from './screens/Inicial';
 import ProcessoNavigator from './screens/ProcessoNavigator';
 import ClienteNavigator from './screens/ClienteNavigator';
+import Clientes from './screens/Clientes';
 
 const Drawer = createDrawerNavigator();
 
