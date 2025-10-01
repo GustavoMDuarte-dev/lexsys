@@ -18,10 +18,9 @@ export default function Inicial() {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={require("../assets/coruja.png")}
-        style={styles.backgroundImage}
-      />
+      <View style={styles.backgroundImageContainer}>
+        <Image source={require('../assets/coruja.png')} style={styles.backgroundImage} />
+      </View>
       <View style={styles.containerSaudacao}>
         <Text style={styles.textSaudacao}>Olá, <Text style={styles.doctorName}>Dr. Gustavo</Text></Text>
       </View>

@@ -1,5 +1,6 @@
-import { React, useEffect, NavigationContainer, createDrawerNavigator, AntDesign, Feather, MaterialIcons, View, Text } from './imports';
-import * as Database from './database/Database';
+import { React, NavigationContainer, createDrawerNavigator, AntDesign, Feather, MaterialIcons, View, Text } from './imports';
+
+// A importação do Database foi removida
 
 import Inicial from './screens/Inicial';
 import ProcessoNavigator from './screens/ProcessoNavigator';
@@ -15,11 +16,8 @@ function Agenda() {
   return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}><Text>Tela Agenda</Text></View>;
 }
 
-
 export default function App() {
-  useEffect(() => {
-    Database.initDb();
-  }, []);
+  // O useEffect para iniciar o DB foi removido
 
   return (
     <NavigationContainer>

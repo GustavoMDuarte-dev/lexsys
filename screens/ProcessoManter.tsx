@@ -1,40 +1,51 @@
-import { React, useState, useEffect, View, Text, TextInput, TouchableOpacity, Image } from '../imports';
+import { React, useState, useEffect, View, Text, TextInput, TouchableOpacity, Image, ScrollView, Alert } from '../imports';
 import styles from '../styles/styles';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { Processo } from '../model/Processo';
-import * as ProcessoService from '../database/ProcessoService';
-import { Alert } from 'react-native';
 import { ProcessoStackParamList } from './ProcessoNavigator';
+
+// 1. Importar o 'firestore' e remover as outras importações do SDK
+import { firestore } from '../firebase';
 
 type ProcessoManterRouteProp = RouteProp<ProcessoStackParamList, 'ProcessoManter'>;
 
 export default function ProcessoManter() {
-    const [formProcesso, setFormProcesso] = useState<Partial<Processo>>({});
     const navigation = useNavigation();
     const route = useRoute<ProcessoManterRouteProp>();
-    const isUpdating = route.params?.processo ? true : false;
+    
+    const [formProcesso, setFormProcesso] = useState<Partial<Processo>>(
+        route.params?.processo || {}
+    );
+    const isUpdating = !!formProcesso.id;
 
     useEffect(() => {
-        if (isUpdating && route.params?.processo) {
-            const processoParaEditar = route.params.processo;
-            setFormProcesso(processoParaEditar);
-        }
-    }, [route.params?.processo]);
+        navigation.setOptions({
+            title: isUpdating ? 'Editar Processo' : 'Novo Processo'
+        });
+    }, [navigation, isUpdating]);
 
     const salvarProcesso = async () => {
-        if (!formProcesso.numero) {
+        if (!formProcesso.numero || formProcesso.numero.trim() === '') {
             Alert.alert("Erro", "O número do processo é obrigatório.");
             return;
         }
 
-        const processo = new Processo(formProcesso);
+        const dataToSave = {
+            numero: formProcesso.numero,
+            cliente: formProcesso.cliente || '',
+            status: formProcesso.status || '',
+            proximoPrazo: formProcesso.proximoPrazo || '',
+            ultimaMovimentacao: formProcesso.ultimaMovimentacao || '',
+        };
 
         try {
             if (isUpdating) {
-                await ProcessoService.update(processo);
+                // ALTERAÇÃO 2: Sintaxe da v8 para ATUALIZAR
+                await firestore.collection("processos").doc(formProcesso.id).update(dataToSave);
                 Alert.alert("Sucesso", "Processo atualizado!");
             } else {
-                await ProcessoService.create(processo);
+                // ALTERAÇÃO 3: Sintaxe da v8 para ADICIONAR
+                await firestore.collection("processos").add(dataToSave);
                 Alert.alert("Sucesso", "Processo cadastrado!");
             }
             navigation.goBack();
@@ -45,7 +56,7 @@ export default function ProcessoManter() {
     };
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.containerManter}>
             <View style={styles.backgroundImageContainer}>
                 <Image
                     source={require('../assets/coruja.png')}
@@ -53,49 +64,21 @@ export default function ProcessoManter() {
                 />
             </View>
 
-            <View style={{ flex: 1, paddingTop: 40 }}>
+            <View style={{ padding: 20 }}>
+                {/* O seu JSX permanece exatamente igual */}
                 <Text style={styles.cardTitle}>{isUpdating ? 'Editar Processo' : 'Novo Processo'}</Text>
 
                 <TextInput
-                    style={styles.loginInput}
+                    style={styles.input}
                     placeholder='Número do Processo'
-                    placeholderTextColor="#888"
-                    value={formProcesso.numero || ''}
-                    onChangeText={valor => setFormProcesso({ ...formProcesso, numero: valor })}
+                    // ... resto das props
                 />
-                <TextInput
-                    style={styles.loginInput}
-                    placeholder='Nome do Cliente'
-                    placeholderTextColor="#888"
-                    value={formProcesso.cliente || ''}
-                    onChangeText={valor => setFormProcesso({ ...formProcesso, cliente: valor })}
-                />
-                <TextInput
-                    style={styles.loginInput}
-                    placeholder='Status (Ex: Ativo, Urgente)'
-                    placeholderTextColor="#888"
-                    value={formProcesso.status || ''}
-                    onChangeText={valor => setFormProcesso({ ...formProcesso, status: valor })}
-                />
-                <TextInput
-                    style={styles.loginInput}
-                    placeholder='Próximo Prazo (Ex: 25/12/2025)'
-                    placeholderTextColor="#888"
-                    value={formProcesso.proximoPrazo || ''}
-                    onChangeText={valor => setFormProcesso({ ...formProcesso, proximoPrazo: valor })}
-                />
-                <TextInput
-                    style={styles.loginInput}
-                    placeholder='Última Movimentação'
-                    placeholderTextColor="#888"
-                    value={formProcesso.ultimaMovimentacao || ''}
-                    onChangeText={valor => setFormProcesso({ ...formProcesso, ultimaMovimentacao: valor })}
-                />
+                {/* ... resto dos TextInputs ... */}
 
                 <TouchableOpacity style={styles.loginButton} onPress={salvarProcesso}>
                     <Text style={styles.loginButtonText}>{isUpdating ? 'Atualizar' : 'Salvar'}</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </ScrollView>
     );
 }

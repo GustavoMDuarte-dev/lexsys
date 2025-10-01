@@ -332,4 +332,28 @@ loginButtonText: {
   fontWeight: '700',
   fontSize: 16,
 },
+ containerManter: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#D9D9D9',
+  },
+  label: {
+    fontSize: 16,
+    marginBottom: 8,
+    color: '#44161F',
+    fontWeight: 'bold',
+  },
+  input: {
+    backgroundColor: '#FFF',
+    borderWidth: 1,
+    borderColor: '#CCC',
+    borderRadius: 8,
+    paddingHorizontal: 15,
+    paddingVertical: 12,
+    fontSize: 16,
+    marginBottom: 20,
+  },
+  buttonContainer: {
+    marginTop: 20,
+  }
 });
