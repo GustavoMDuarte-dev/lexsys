@@ -13,11 +13,7 @@ const Stack = createStackNavigator<ProcessoStackParamList>();
 
 export default function ProcessoNavigator() {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false 
-      }}
-    >
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="ProcessoListar" component={Processos} />
       <Stack.Screen name="ProcessoManter" component={ProcessoManter} />
     </Stack.Navigator>

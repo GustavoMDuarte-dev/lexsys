@@ -3,8 +3,6 @@ import styles from '../styles/styles';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { Processo } from '../model/Processo';
 import { ProcessoStackParamList } from './ProcessoNavigator';
-
-// 1. Importar o 'firestore' e remover as outras importações do SDK
 import { firestore } from '../firebase';
 
 type ProcessoManterRouteProp = RouteProp<ProcessoStackParamList, 'ProcessoManter'>;
@@ -20,9 +18,15 @@ export default function ProcessoManter() {
 
     useEffect(() => {
         navigation.setOptions({
+            // O header da stack já está desabilitado, mas caso habilite, o título estará correto.
             title: isUpdating ? 'Editar Processo' : 'Novo Processo'
         });
     }, [navigation, isUpdating]);
+
+    // Função para atualizar o estado do formulário
+    const handleChange = (name: keyof Processo, value: string) => {
+        setFormProcesso(prevState => ({ ...prevState, [name]: value }));
+    };
 
     const salvarProcesso = async () => {
         if (!formProcesso.numero || formProcesso.numero.trim() === '') {
@@ -40,11 +44,9 @@ export default function ProcessoManter() {
 
         try {
             if (isUpdating) {
-                // ALTERAÇÃO 2: Sintaxe da v8 para ATUALIZAR
                 await firestore.collection("processos").doc(formProcesso.id).update(dataToSave);
                 Alert.alert("Sucesso", "Processo atualizado!");
             } else {
-                // ALTERAÇÃO 3: Sintaxe da v8 para ADICIONAR
                 await firestore.collection("processos").add(dataToSave);
                 Alert.alert("Sucesso", "Processo cadastrado!");
             }
@@ -64,21 +66,50 @@ export default function ProcessoManter() {
                 />
             </View>
 
-            <View style={{ padding: 20 }}>
-                {/* O seu JSX permanece exatamente igual */}
-                <Text style={styles.cardTitle}>{isUpdating ? 'Editar Processo' : 'Novo Processo'}</Text>
+            {/* Labels e Inputs para todos os campos do processo */}
+            <Text style={styles.label}>Número do Processo</Text>
+            <TextInput
+                style={styles.input}
+                placeholder='0000000-00.0000.0.00.0000'
+                value={formProcesso.numero}
+                onChangeText={(value) => handleChange('numero', value)}
+            />
 
-                <TextInput
-                    style={styles.input}
-                    placeholder='Número do Processo'
-                    // ... resto das props
-                />
-                {/* ... resto dos TextInputs ... */}
+            <Text style={styles.label}>Cliente</Text>
+            <TextInput
+                style={styles.input}
+                placeholder='Nome do cliente'
+                value={formProcesso.cliente}
+                onChangeText={(value) => handleChange('cliente', value)}
+            />
 
-                <TouchableOpacity style={styles.loginButton} onPress={salvarProcesso}>
-                    <Text style={styles.loginButtonText}>{isUpdating ? 'Atualizar' : 'Salvar'}</Text>
-                </TouchableOpacity>
-            </View>
+            <Text style={styles.label}>Status</Text>
+            <TextInput
+                style={styles.input}
+                placeholder='Ativo, Urgente, Arquivado...'
+                value={formProcesso.status}
+                onChangeText={(value) => handleChange('status', value)}
+            />
+
+            <Text style={styles.label}>Próximo Prazo</Text>
+            <TextInput
+                style={styles.input}
+                placeholder='DD/MM/AAAA'
+                value={formProcesso.proximoPrazo}
+                onChangeText={(value) => handleChange('proximoPrazo', value)}
+            />
+
+            <Text style={styles.label}>Última Movimentação</Text>
+            <TextInput
+                style={styles.input}
+                placeholder='Descreva a última atualização'
+                value={formProcesso.ultimaMovimentacao}
+                onChangeText={(value) => handleChange('ultimaMovimentacao', value)}
+            />
+
+            <TouchableOpacity style={styles.loginButton} onPress={salvarProcesso}>
+                <Text style={styles.loginButtonText}>{isUpdating ? 'Atualizar' : 'Salvar'}</Text>
+            </TouchableOpacity>
         </ScrollView>
     );
 }
