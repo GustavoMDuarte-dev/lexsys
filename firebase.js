@@ -3,7 +3,6 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/storage";
 
-// COLAR AQUI A STRING DE CONEXÃO
 const firebaseConfig = {
   apiKey: "AIzaSyAOHHhiBpXGjd6rpRTH7YZghY8nYeZpFbY",
   authDomain: "lexsys-app.firebaseapp.com",

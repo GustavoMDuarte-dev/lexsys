@@ -2,7 +2,7 @@
 
 // React e React Native
 import React, { useState, useEffect } from 'react';
-import { Text, View, Image, TouchableOpacity, TextInput, ScrollView, FlatList, Alert, StyleSheet } from 'react-native';
+import { Text, View, Image, TouchableOpacity, TextInput, ScrollView, FlatList, Alert, StyleSheet, ActivityIndicator } from 'react-native';
 import {
   LayoutAnimation,
   Platform,
@@ -44,5 +44,6 @@ export {
   useNavigation,
   useRoute,
   RouteProp,
-  StackNavigationProp
+  StackNavigationProp,
+  ActivityIndicator
 };
